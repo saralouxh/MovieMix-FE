@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark flex-sm-nowrap flex-wrap">
+    <span class="navbar-brand" style="padding-left: 1rem;"><a class="text-reset" routerLink="/home">MovieMix</a></span>
+    <div class="navbar-collapse collapse justify-content-center" id="navbar5">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <form [formGroup]="searchForm" (ngSubmit)="onSearchMovie()">
+                        <div class="search-box">
+                            <input type="text" class="search-input" id="movieTitle" formControlName="movieTitle" placeholder="Start Looking For Movies!">
+                            <button class="search-btn" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </li>
+               
+               
+            </ul>
+    </div>
+    </nav>
+</div>

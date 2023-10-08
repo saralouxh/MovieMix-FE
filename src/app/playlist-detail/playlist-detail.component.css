@@ -1,0 +1,108 @@
+.playlist-heading {
+    flex: 1;
+    font-weight: bold;
+    font-size: 50px;
+    padding-bottom: 10px;
+    text-align: center;
+    line-height: 1;
+} 
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.separator {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #ccc; /* Adjust the color and thickness as needed */
+    margin: 1rem 0; /* Adjust the margin as needed */
+}
+.card{
+    overflow: hidden;
+    /* max-width: 250px;
+    max-height: 350px; */
+    margin: 10px;
+}
+.card-img-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    background-color: rgba(66, 65, 65, 0.5);
+}
+
+.card-title {
+    font-size: 20px;
+}
+
+.card:hover{
+    transform: scale(1.05);
+    transition: all linear 100ms;
+    z-index: 1;
+    box-shadow: 1px 1px 10px rgba(0,0,0,.3);
+    cursor: pointer;
+}
+.flex-container{
+    /* max-width: 100%; */
+    display: flex;
+    /* flex-direction: row; */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card-container{
+    margin: 1.5rem;
+    margin-bottom: 5rem;
+    width: 250px;
+    height: 350px;
+}
+.edit-button{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: #fff;
+    color: black;
+    font-size: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    margin-left: 1.5rem;
+}
+.edit-button .material-symbols-outlined {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.edit-button::after {
+    display: none; /* Hide the default arrow icon */
+}
+  
+.add-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    color: black;
+    font-size: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+.dropdown-item{
+    color:black;
+    cursor: pointer;
+}
+.dropdown-menu {
+    width: 100px; /* Set the desired width */
+  }
+  

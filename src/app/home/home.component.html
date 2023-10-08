@@ -1,0 +1,23 @@
+<div class="container-fluid">
+
+  <h2 class="section-title pb-4">Popular Movies</h2>
+  <div class="media-scroller-movie snaps-inline">
+
+    <div class="media-element" *ngFor="let movie of movies">
+      <h5 class="card-title">{{ movie.title }}</h5>
+      <div class="card movie-card">
+        <img [src]=" movie.image || 'https://via.placeholder.com/150' " alt="...">
+        <button type="button" class="dropdown-toggle add-button" data-bs-toggle="dropdown" aria-expanded="false">+</button>
+        <ul class="dropdown-menu" data-toggle="modal" data-target="#newPlaylistModal">
+          <li><a class="dropdown-item" (click)="openNewPlaylistModal()">New MovieMix</a></li>
+          <li><hr class="dropdown-divider" style="width: 90%;"></li>
+          <li><a class="dropdown-item" *ngFor="let playlist of playlists" (click)="addMovieToPlaylist(movie, playlist.id)">{{playlist.name}}</a></li>
+        </ul>
+      </div>  
+    </div>
+
+  </div>
+
+  <app-all-playlists></app-all-playlists>
+
+</div>

@@ -1,0 +1,19 @@
+<h2 class="section-title">MovieMix Library</h2>
+
+<div class="flex-container" *ngIf="allPlaylists">
+
+    <a routerLink="/playlist-detail/{{playlist.id}}" class="text-reset" *ngFor="let playlist of allPlaylists">
+        <div class="card-container">
+            <div class="card text-white">
+                <img class="img-fluid"
+                    src="https://source.unsplash.com/750x750/?movie,{{ playlist.name }}"
+                    alt="Card image cap" />
+                <div class="card-img-overlay">
+                    <h5 class="card-title">{{playlist.name}}</h5>
+                </div>
+            </div>  
+                
+        </div>
+    </a>
+    
+</div>
