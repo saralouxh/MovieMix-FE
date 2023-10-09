@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './shared/nav/nav.component';
@@ -36,6 +36,10 @@ import { AllPlaylistsComponent } from './home/all-playlists/all-playlists.compon
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN', // Adjust as needed
+      headerName: 'X-XSRF-TOKEN', // Adjust as needed
+    }),
     BrowserAnimationsModule,
     MatDialogModule,
     MatFormFieldModule,

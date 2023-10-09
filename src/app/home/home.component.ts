@@ -13,8 +13,6 @@ export class HomeComponent implements OnInit {
   movies: any[];
   playlists: any[] = [];
   // user_id: any;
-  private apiUrl: "imdb-top-100-movies.p.rapidapi.com";
-  private apiKey: "84e214a16bmsh62e376ebec92bc7p1c0eefjsn475fec7db90b";
 
   constructor(
     private http: HttpClient, 
@@ -24,12 +22,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     // API Call
-		const headers = new HttpHeaders({
-      'X-RapidAPI-Key': this.apiKey,
-      'X-RapidAPI-Host': this.apiUrl
-		});
+		const headers = new HttpHeaders( {
+      'X-RapidAPI-Key': '84e214a16bmsh62e376ebec92bc7p1c0eefjsn475fec7db90b',
+      'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+    });
 		this.http
-			.get<any>(this.apiUrl, {
+			.get<any>('https://imdb-top-100-movies.p.rapidapi.com', {
 				headers: headers
 			})
 			.subscribe(data => {

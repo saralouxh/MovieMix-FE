@@ -19,7 +19,12 @@ export class PlaylistService {
     ) { }
 
   fetchAllPlaylists(){
-    return this.http.get(`${URL}/playlists`)
+    console.log('fetching all playlists')
+    return this.http.get(`${URL}/playlists`).pipe(
+      tap((data) => {
+        console.log('Playlists received:', data); // Add this line
+      })
+    );
   }
 
   fetchSinglePlaylist(id:any){
@@ -74,21 +79,14 @@ export class PlaylistService {
     const token = JSON.parse(localStorage.getItem('token'));
 
     return this.http.post(
-      'https://filmflix-be-production.up.railway.app/api/v1/playlists',
-      {
-        name
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token.value}`,
-        },
-      }
+      `${URL}/playlists`,
+      {name},
     );
   }
 
-  deletePlaylist(playlistId: any){
+  deletePlaylist(id: any){
     const token = JSON.parse(localStorage.getItem('token'));
-    return this.http.delete(`https://filmflix-be-production.up.railway.app/api/v1/playlists/${playlistId}`, {
+    return this.http.delete(`${URL}/playlists/${id}`, {
       headers: {
         Authorization: `Bearer ${token.value}`,
       },
