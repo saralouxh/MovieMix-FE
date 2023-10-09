@@ -10,22 +10,28 @@ const URL = 'http://localhost:3000';
   providedIn: 'root',
 })
 export class PlaylistService {
+  private playlists$ = new BehaviorSubject<any[]>([]);
   playlistMoviesSubject: Subject<any> = new Subject();
-  usersPlaylistsSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  // usersPlaylistsSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
   constructor(
     private http: HttpClient, 
     private route: ActivatedRoute, 
     ) { }
 
-  fetchAllPlaylists(){
-    console.log('fetching all playlists')
-    return this.http.get(`${URL}/playlists`).pipe(
-      tap((data) => {
-        console.log('Playlists received:', data); // Add this line
-      })
-    );
+  
+  public init(): void {
+    this.http.get<any>(`${URL}/playlists`).subscribe((res) => {
+      this.playlists$.next(res);
+      console.log(res);
+    });
   }
+
+  getPlaylists(): Observable<any[]> {
+    console.log(this.playlists$);
+    return this.playlists$;
+  }
+  
 
   fetchSinglePlaylist(id:any){
     return this.http.get(`${URL}/playlists/${id}`)

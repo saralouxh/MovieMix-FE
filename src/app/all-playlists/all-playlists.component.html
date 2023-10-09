@@ -1,6 +1,6 @@
 <h2 class="section-title">MovieMix Library</h2>
 
-<div class="flex-container" *ngIf="allPlaylists">
+<div class="flex-container" *ngIf="allPlaylists$">
 
     <div *ngFor="let playlist of allPlaylists">
         <a routerLink="/playlist-detail/{{playlist.id}}" class="text-reset">
