@@ -10,17 +10,13 @@ import { PlaylistService } from 'src/app/services/playlist.service';
 export class AllPlaylistsComponent implements OnInit {
   allPlaylists$: Observable<any>;
 
-  constructor(private playlistService: PlaylistService) {
-    this.allPlaylists$ = this.playlistService.getPlaylists();
-  }
+  constructor(private playlistService: PlaylistService) {}
 
   ngOnInit(): void {
-    // this.playlistService.fetchAllPlaylists().subscribe((res: any) => {
-    //   if (res.success) {
-    //     this.allPlaylists = res;
-    //     console.log(this.allPlaylists)
-    //   }
-    // });
+    this.playlistService.fetchAllPlaylists().subscribe((res: any) => {
+      this.allPlaylists$ = res;
+      // console.log(this.allPlaylists$)
+    });
   }
 
 }

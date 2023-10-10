@@ -28,6 +28,11 @@ export class SearchMovieComponent implements OnInit {
       'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'  
     });
   
+    // Fetch playlists from your service
+    this.playlistService.fetchAllPlaylists().subscribe((data: any) => {
+      this.playlists = data;
+    });
+
     this.route.queryParams.subscribe(params => {
       const searchTerm = params['q'];
       this.http.get<any>(`https://online-movie-database.p.rapidapi.com/title/find?q=${searchTerm}`, {
@@ -43,9 +48,8 @@ export class SearchMovieComponent implements OnInit {
     });
   }
 
-
   onAddMovie(movie: any, playlistId: any){
-    this.playlistService.onAddMovie(movie, playlistId).subscribe((res) => {
+    this.playlistService.addMovieToPlaylist(movie, playlistId).subscribe((res) => {
       console.log(res);
     });
   }

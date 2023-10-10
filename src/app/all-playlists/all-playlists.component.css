@@ -1,12 +1,4 @@
-
 /* card styling */
-.card {
-  position: relative;
-  overflow: hidden;
-  max-width: 350px;
-  max-height: 250px;
-  margin: 1rem;
-}
 
 .card-img-overlay {
   display: flex;
@@ -41,15 +33,6 @@
   text-align: left;
 }
 
-.card{
-    border-radius: 8px;
-    border: 1px solid #cccccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all linear 200ms;
-}
-
 .flex-container{
     max-width: 100%;
     display: flex;
@@ -61,12 +44,17 @@
     padding: 1rem;
 } 
 
-/* card styling */
-/* .card {
+.card {
     position: relative;
     overflow: hidden;
     max-width: 350px;
     max-height: 250px;
+    border-radius: 8px;
+    border: 1px solid #cccccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all linear 200ms;
 }
 .card-img-overlay {
     display: flex;
@@ -88,4 +76,4 @@
     font-weight: bold;
     line-height: 1;
 }
- */
+
