@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
   }
 
   addMovieToPlaylist(movie: any, playlistId: any){
-    this.playlistService.onAddMovie(movie, playlistId).subscribe((res) => {
+    this.playlistService.addMovieToPlaylist(movie, playlistId).subscribe((res) => {
       console.log(res);
     });
   }

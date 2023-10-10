@@ -19,10 +19,11 @@ export class NewPlaylistModalComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   onSavePlaylist() {
     const newPlaylist = this.createPlaylistForm.value.name;
 
-    this.playlistService.createUserPlaylist(newPlaylist).subscribe((res: any) => {
+    this.playlistService.createPlaylist(newPlaylist).subscribe((res: any) => {
       console.log(res)
     });
     this.dialogRef.close();

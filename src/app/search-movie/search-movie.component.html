@@ -7,7 +7,7 @@
           <button type="button" class="dropdown-toggle add-button" data-bs-toggle="dropdown" aria-expanded="false">+</button>
           <ul class="dropdown-menu" data-toggle="modal" data-target="#newPlaylistModal">
             <li><a class="dropdown-item" (click)="openNewPlaylistModal()">New MovieMix</a></li>
-            <li><hr class="dropdown-divider" style="width: 90%;"></li>
+            <li><hr class="dropdown-divider" style="width: 80%;"></li>
             <li><a class="dropdown-item" *ngFor="let playlist of playlists" (click)="onAddMovie(movie, playlist.id)">{{playlist.name}}</a></li>
           </ul>
       </div>

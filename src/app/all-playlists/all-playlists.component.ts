@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { PlaylistService } from 'src/app/services/playlist.service';
 
 @Component({
@@ -7,16 +8,14 @@ import { PlaylistService } from 'src/app/services/playlist.service';
   styleUrls: ['./all-playlists.component.css']
 })
 export class AllPlaylistsComponent implements OnInit {
-  allPlaylists: any = [];
+  allPlaylists$: Observable<any>;
 
   constructor(private playlistService: PlaylistService) {}
 
   ngOnInit(): void {
     this.playlistService.fetchAllPlaylists().subscribe((res: any) => {
-      if (res.success) {
-        this.allPlaylists = res.payload.playlists;
-        console.log(this.allPlaylists)
-      }
+      this.allPlaylists$ = res;
+      // console.log(this.allPlaylists$)
     });
   }
 

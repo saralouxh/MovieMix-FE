@@ -10,88 +10,47 @@ const URL = 'http://localhost:3000';
   providedIn: 'root',
 })
 export class PlaylistService {
-  playlistMoviesSubject: Subject<any> = new Subject();
-  usersPlaylistsSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  // private playlists$ = new BehaviorSubject<any[]>([]);
+  // playlistMoviesSubject: Subject<any> = new Subject();
+  // usersPlaylistsSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
   constructor(
     private http: HttpClient, 
     private route: ActivatedRoute, 
     ) { }
 
+  
   fetchAllPlaylists(){
-    console.log('fetching all playlists')
-    return this.http.get(`${URL}/playlists`).pipe(
-      tap((data) => {
-        console.log('Playlists received:', data); // Add this line
+    return this.http.get(`${URL}/playlists`);
+  }
+
+  fetchPlaylistMovies(id:any){
+    return this.http.get(`${URL}/playlists/${id}/movies`)
+  }
+
+  fetchSinglePlaylist(id: any){
+    return this.http.get(`${URL}/playlists/${id}`);
+  }
+
+  createPlaylist(name: any){
+    return this.http.post(`${URL}/playlists`, {name});
+  }
+
+  addMovieToPlaylist(movie: any, playlistId: any) {
+    const trimmedMovieData = {
+      title: movie.title,
+      image: movie.image,
+    };
+  
+    return this.http.post(`${URL}/playlists/${playlistId}/add_movie`, trimmedMovieData).pipe(
+      tap((response) => {
+        console.log('Response:', response);
       })
     );
   }
 
-  fetchSinglePlaylist(id:any){
-    return this.http.get(`${URL}/playlists/${id}`)
+  onDeleteMovie(playlistId: any, movieId: any){
+    return this.http.delete(`${URL}/playlists/${playlistId}/remove_movie?movie_id=${movieId}`);
   }
-
-
-  onDeleteMovie(movieId: any, playlistId: any){
-    const token = JSON.parse(localStorage.getItem('token'));
-    return this.http.delete(`${URL}/playlists/${playlistId}/movies/${movieId}`, {
-      headers: {
-        Authorization: `Bearer ${token.value}`,
-      },
-    });
-  }
-
-  onAddMovie(movie: any, playlistId: any) {
-    return new Observable((observer) => {
-      this.fetchSinglePlaylist(playlistId).subscribe((playlist: any) => {
-        if (!playlist.movies) {
-          playlist.movies = []; // Initialize the 'movies' property as an array
-        }
-        playlist.movies.push(movie);
-        this.playlistMoviesSubject.next(playlist);
-        console.log(movie)
-        const token = JSON.parse(localStorage.getItem('token'));
-        this.http
-          .post(
-            `${URL}/playlists/${playlistId}/movies`,
-            { movie },
-            {
-              headers: {
-                Authorization: `Bearer ${token.value}`,
-              },
-            }
-          )
-          .subscribe(
-            (res) => {
-              observer.next(res);
-              observer.complete();
-              console.log(res);
-            },
-            (error) => {
-              observer.error(error);
-            }
-          );
-      });
-    });
-  }
-
-  createUserPlaylist(name: any){
-    const token = JSON.parse(localStorage.getItem('token'));
-
-    return this.http.post(
-      `${URL}/playlists`,
-      {name},
-    );
-  }
-
-  deletePlaylist(id: any){
-    const token = JSON.parse(localStorage.getItem('token'));
-    return this.http.delete(`${URL}/playlists/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token.value}`,
-      },
-    });
-  }
-
 
 }

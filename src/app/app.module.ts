@@ -17,7 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { NewPlaylistModalComponent } from './shared/new-playlist-modal/new-playlist-modal.component';
 import { MovieComponent } from './shared/movie/movie.component';
-import { AllPlaylistsComponent } from './home/all-playlists/all-playlists.component';
+import { AllPlaylistsComponent } from './all-playlists/all-playlists.component';
 
 
 @NgModule({
