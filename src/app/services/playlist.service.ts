@@ -53,4 +53,8 @@ export class PlaylistService {
     return this.http.delete(`${URL}/playlists/${playlistId}/remove_movie?movie_id=${movieId}`);
   }
 
+  deletePlaylist(playlistId: any){
+    return this.http.delete(`${URL}/playlists/${playlistId}`);
+  }
+
 }

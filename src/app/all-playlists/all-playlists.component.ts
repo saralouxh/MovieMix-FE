@@ -14,8 +14,9 @@ export class AllPlaylistsComponent implements OnInit {
 
   ngOnInit(): void {
     this.playlistService.fetchAllPlaylists().subscribe((res: any) => {
-      this.allPlaylists$ = res;
-      // console.log(this.allPlaylists$)
+      this.allPlaylists$ = res.sort((a, b) => {
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      });
     });
   }
 

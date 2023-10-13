@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { PlaylistService } from 'src/app/services/playlist.service';
 
 @Component({
@@ -15,7 +16,11 @@ export class NewPlaylistModalComponent implements OnInit {
     name: new FormControl('')
   });
 
-  constructor(private playlistService: PlaylistService, private dialogRef: MatDialogRef<NewPlaylistModalComponent>) { }
+  constructor(
+    private playlistService: PlaylistService, 
+    private router: Router,
+    private dialogRef: MatDialogRef<NewPlaylistModalComponent>
+    ) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +32,7 @@ export class NewPlaylistModalComponent implements OnInit {
       console.log(res)
     });
     this.dialogRef.close();
+    this.router.navigate(['/home']);
   }
 
   onCancel(){
