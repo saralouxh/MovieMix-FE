@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../models/user.model';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { NewPlaylistModalComponent } from '../new-playlist-modal/new-playlist-modal.component';
 
 @Component({
   selector: 'app-nav',
@@ -9,14 +10,13 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  currentUser: User = null;
-
   searchForm = new FormGroup({
     movieTitle: new FormControl(''),
   });
 
   constructor(
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
     ) { }
 
   ngOnInit(): void {
@@ -26,6 +26,12 @@ export class NavComponent implements OnInit {
   onSearchMovie(){
     const searchTerm = this.searchForm.get('movieTitle').value;
     this.router.navigate(['/search-movie'], { queryParams: { q: searchTerm } } );
+  }
+
+  openNewPlaylistModal(){
+    const dialogRef = this.dialog.open(NewPlaylistModalComponent, {
+      width: '300px',
+    });
   }
 
 }

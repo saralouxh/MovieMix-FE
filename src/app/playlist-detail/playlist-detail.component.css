@@ -1,22 +1,24 @@
 .playlist-heading {
-    flex: 1;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 50px;
-    padding-bottom: 10px;
     text-align: center;
+    margin-bottom: 25px;
     line-height: 1;
 } 
 .row {
+    width: 95%;
+    border-bottom: 2px solid #FF1E1E;
+    margin-bottom: 1rem;
+}
+.col {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* white-space: nowrap !important;
+    flex-wrap: nowrap !important; */
+   
   }
-.separator {
-    width: 100%;
-    border: none;
-    border-top: 1px solid #ccc; /* Adjust the color and thickness as needed */
-    margin: 1rem 0; /* Adjust the margin as needed */
-}
+
 .card{
     overflow: hidden;
     /* max-width: 250px;
@@ -42,7 +44,6 @@
     transform: scale(1.05);
     transition: all linear 100ms;
     z-index: 1;
-    box-shadow: 1px 1px 10px rgba(0,0,0,.3);
     cursor: pointer;
 }
 .flex-container{
@@ -71,14 +72,14 @@
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    margin-bottom: 1rem;
-    margin-left: 1.5rem;
+    margin-bottom: 20px;
+    margin-left: 2rem;
 }
 .edit-button .material-symbols-outlined {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
 }
 
 .edit-button::after {
@@ -103,6 +104,6 @@
     cursor: pointer;
 }
 .dropdown-menu {
-    width: 100px; /* Set the desired width */
+    width: 100px;
   }
   

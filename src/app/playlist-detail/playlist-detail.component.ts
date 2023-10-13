@@ -47,11 +47,11 @@ export class PlaylistDetailComponent implements OnInit {
     });
   }
 
-  onDeletePlaylist(){
-    // this.playlistService.deletePlaylist(playlistId).subscribe((res) => {
-    //   console.log(res);
-    //   this.router.navigate(['/user-playlists']); // Navigate to the user-playlists page
-    // })
+  onDeletePlaylist(playlistId: any){
+    this.playlistService.deletePlaylist(playlistId).subscribe((res) => {
+      console.log(res);
+      this.router.navigate(['/home']);
+    })
   }
 
 }

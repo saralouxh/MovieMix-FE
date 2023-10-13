@@ -1,22 +1,25 @@
 <div class="flex-container pt-5" *ngIf="playlist">
   <!-- Playlist Title -->
   <div class="row">
-    <h2 class="playlist-heading">{{ playlist.name }}</h2>
-    <button type="button" class="dropdown-toggle edit-button" data-bs-toggle="dropdown" aria-expanded="false">
-      <span class="material-symbols-outlined">edit</span>
-    </button>
+    <div class="col-sm-10">
+      <h2 class="playlist-heading">{{ playlist.name }}</h2>
+    </div>
+    <div class="col-sm-2">
+      <button type="button" class="dropdown-toggle edit-button" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="material-symbols-outlined">edit</span>
+      </button>
       <ul class="dropdown-menu" data-toggle="modal">
         <li><a class="dropdown-item" (click)="openNewPlaylistModal()">Rename</a></li>
         <li><a class="dropdown-item" (click)="onDeletePlaylist(playlist.id)">Delete</a></li>
       </ul>
+    </div>
    
   </div>
-  <hr class="separator">
-          
+        
   <div class="card-container" *ngFor="let movie of playlistMovies">
-    <h5 class="card-title">{{ movie.title }}</h5>
+    <!-- <h5 class="card-title">{{ movie.title }}</h5> -->
     <div class="card">
-      <img [src]=" movie.image || 'https://via.placeholder.com/150' " alt="...">
+      <img [src]=" movie.image" alt="...">
       <button type="button" class="add-button" (click)="deleteMovie(movie.id)">-</button>
     </div>  
   </div>
