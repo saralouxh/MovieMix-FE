@@ -10,14 +10,6 @@
     border-bottom: 2px solid #FF1E1E;
     margin-bottom: 1rem;
 }
-.col {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* white-space: nowrap !important;
-    flex-wrap: nowrap !important; */
-   
-  }
 
 .card{
     overflow: hidden;
